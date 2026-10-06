@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Host Login</title>
 
@@ -13,59 +15,110 @@
 <body>
 
 <header>
+
     <h1>College Event Management System</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="register.html">Register</a>
+        <a href="host-login.html">Host Login</a>
+    </nav>
+
 </header>
 
-<section class="login">
+
+<section class="registration">
 
     <h2>Host Login</h2>
 
-    <form id="hostLoginForm" onsubmit="return false;">
+    <form onsubmit="login(event)">
 
-        <label>Host Email:</label>
-        <input type="email" id="hostUsername" required>
+        <label>Host Email</label>
 
-        <label>Password:</label>
-        <input type="password" id="hostPassword" required>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter host email"
+            required
+        >
 
-        <button type="button" id="loginButton">Login</button>
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Login
+        </button>
 
     </form>
 
-    <p id="hostLoginMessage"></p>
+    <p id="loginMessage"></p>
 
 </section>
 
+
+<footer>
+
+    <p>© 2026 College Event Management System</p>
+
+</footer>
+
+
 <script>
 
-document.getElementById("loginButton").onclick = function() {
+function login(event) {
 
-    let email = document.getElementById("hostUsername").value;
-    let password = document.getElementById("hostPassword").value;
+    event.preventDefault();
 
-    if (email === "necn@college.com" && password === "12345") {
+    const email =
+        document.getElementById("email").value.trim();
 
-        document.getElementById("hostLoginMessage").innerHTML =
-            "Login Successful! ✅";
+    const password =
+        document.getElementById("password").value.trim();
 
-        document.getElementById("hostLoginMessage").style.color = "green";
+
+    if (
+        email === "necn@college.com" &&
+        password === "12345"
+    ) {
+
+        document.getElementById("loginMessage").innerHTML =
+            "Login successful! ✅";
+
+        document.getElementById("loginMessage").style.color =
+            "green";
 
         setTimeout(function() {
-            window.location.href = "host-dashboard.html";
+
+            window.location.href =
+                "host-dashboard.html";
+
         }, 500);
-
-    } else {
-
-        document.getElementById("hostLoginMessage").innerHTML =
-            "Invalid Host Email or Password ❌";
-
-        document.getElementById("hostLoginMessage").style.color = "red";
 
     }
 
-};
+    else {
+
+        document.getElementById("loginMessage").innerHTML =
+            "Invalid email or password ❌";
+
+        document.getElementById("loginMessage").style.color =
+            "red";
+
+    }
+
+}
 
 </script>
 
 </body>
+
 </html>
