@@ -13,7 +13,6 @@
 <body>
 
 <header>
-
     <h1>College Event Management System</h1>
 
     <nav>
@@ -21,7 +20,6 @@
         <a href="events.html">Events</a>
         <a href="register.html">Register</a>
     </nav>
-
 </header>
 
 <section class="registration">
@@ -31,7 +29,6 @@
     <form id="hostLoginForm">
 
         <label>Email</label>
-
         <input
             type="email"
             id="hostEmail"
@@ -40,7 +37,6 @@
         >
 
         <label>Password</label>
-
         <input
             type="password"
             id="hostPassword"
@@ -50,9 +46,7 @@
 
         <br><br>
 
-        <button type="submit">
-            Login
-        </button>
+        <button type="submit">Login</button>
 
     </form>
 
@@ -66,43 +60,29 @@
 
 <script>
 
-const hostLoginForm =
-    document.getElementById("hostLoginForm");
+const hostLoginForm = document.getElementById("hostLoginForm");
 
 hostLoginForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    const email =
-        document.getElementById("hostEmail").value.trim();
+    const email = document.getElementById("hostEmail").value.trim();
+    const password = document.getElementById("hostPassword").value.trim();
 
-    const password =
-        document.getElementById("hostPassword").value.trim();
+    const message = document.getElementById("hostLoginMessage");
 
-    const message =
-        document.getElementById("hostLoginMessage");
+    if (email === "necn@college.com" && password === "12345") {
 
-    if (
-        email === "necn@college.com" &&
-        password === "12345"
-    ) {
-
-        message.innerHTML =
-            "Login successful! ✅";
-
+        message.innerHTML = "Login successful! ✅";
         message.style.color = "green";
 
         setTimeout(function() {
-
-            window.location.replace("host-dashboard.html");
-
+            window.location.href = "host-dashboard.html";
         }, 500);
 
     } else {
 
-        message.innerHTML =
-            "Invalid email or password ❌";
-
+        message.innerHTML = "Invalid email or password ❌";
         message.style.color = "red";
 
     }
@@ -112,5 +92,4 @@ hostLoginForm.addEventListener("submit", function(event) {
 </script>
 
 </body>
-
 </html>
