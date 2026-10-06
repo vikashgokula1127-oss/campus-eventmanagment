@@ -24,7 +24,6 @@
 
 </header>
 
-
 <section class="registration">
 
     <h2>Host Login</h2>
@@ -61,19 +60,14 @@
 
 </section>
 
-
 <footer>
-
     <p>© 2026 College Event Management System</p>
-
 </footer>
-
 
 <script>
 
 const hostLoginForm =
     document.getElementById("hostLoginForm");
-
 
 hostLoginForm.addEventListener("submit", function(event) {
 
@@ -88,7 +82,6 @@ hostLoginForm.addEventListener("submit", function(event) {
     const message =
         document.getElementById("hostLoginMessage");
 
-
     if (
         email === "necn@college.com" &&
         password === "12345"
@@ -99,16 +92,13 @@ hostLoginForm.addEventListener("submit", function(event) {
 
         message.style.color = "green";
 
-
         setTimeout(function() {
 
             window.location.replace("host-dashboard.html");
 
         }, 500);
 
-    }
-
-    else {
+    } else {
 
         message.innerHTML =
             "Invalid email or password ❌";
