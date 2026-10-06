@@ -9,11 +9,6 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import {
-    getAuth,
-    signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyBCd9jgelyscNH8uht8s8nFsRfXkvK-eIbg",
@@ -27,7 +22,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
 
 
 // ===============================
@@ -72,6 +66,7 @@ if (form) {
         }
 
     });
+
 }
 
 
@@ -98,6 +93,7 @@ function loginUser(event) {
         message.style.color = "red";
 
     }
+
 }
 
 
@@ -122,8 +118,6 @@ if (eventForm) {
         const eventVenue =
             document.getElementById("eventVenue").value;
 
-        
-
 
         try {
 
@@ -131,8 +125,7 @@ if (eventForm) {
 
                 name: eventName,
                 date: eventDate,
-                venue: eventVenue,
-                
+                venue: eventVenue
 
             });
 
@@ -163,7 +156,6 @@ if (eventForm) {
 }
 
 
-// ===============================
 // ===============================
 // DISPLAY EVENTS
 // ===============================
@@ -204,8 +196,6 @@ if (eventContainer) {
                         ${eventData.venue}
                     </p>
 
-                    
-
                     <a href="register.html">
                         <button>Register Now</button>
                     </a>
@@ -223,18 +213,20 @@ if (eventContainer) {
             );
 
         }
+
     }
 
     loadEvents();
+
 }
 
 
 // ===============================
-// ===============================
 // HOST LOGIN
 // ===============================
 
-const hostLoginForm = document.getElementById("hostLoginForm");
+const hostLoginForm =
+    document.getElementById("hostLoginForm");
 
 if (hostLoginForm) {
 
@@ -242,31 +234,41 @@ if (hostLoginForm) {
 
         event.preventDefault();
 
-        const email = document.getElementById("hostUsername").value;
-        const password = document.getElementById("hostPassword").value;
+        const email =
+            document.getElementById("hostUsername").value.trim();
 
-        const message = document.getElementById("hostLoginMessage");
+        const password =
+            document.getElementById("hostPassword").value.trim();
 
-        // Host email and password
+        const message =
+            document.getElementById("hostLoginMessage");
+
+
         if (email === "necn@college.com" && password === "12345") {
 
-            message.innerHTML = "Host Login Successful! ✅";
+            message.innerHTML =
+                "Host Login Successful! ✅";
+
             message.style.color = "green";
 
+
             setTimeout(function() {
-                window.location.href = "host-dashboard.html";
-            }, 1000);
+
+                window.location.replace("host-dashboard.html");
+
+            }, 500);
+
 
         } else {
 
-            message.innerHTML = "Invalid Host Email or Password ❌";
+            message.innerHTML =
+                "Invalid Host Email or Password ❌";
+
             message.style.color = "red";
 
         }
 
     });
-
-}
 
 }
 
@@ -276,9 +278,7 @@ if (hostLoginForm) {
 // ===============================
 
 const participantsContainer =
-    document.getElementById(
-        "participantsContainer"
-    );
+    document.getElementById("participantsContainer");
 
 
 if (participantsContainer) {
@@ -322,9 +322,11 @@ if (participantsContainer) {
                         <h3>${participant.name}</h3>
 
                         <p>
-                        <b>Roll Number:</b>
-        ${participant.rollNumber || "No Roll Number"}
-    </p>
+                            <b>Roll Number:</b>
+                            ${participant.rollNumber || "No Roll Number"}
+                        </p>
+
+                        <p>
                             <b>Email:</b>
                             ${participant.email}
                         </p>
